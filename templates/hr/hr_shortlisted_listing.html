@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shortlisted Candidates</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <nav class="breadcrumb">
+            <a href="{{ url_for('hr_dashboard') }}">← Back to Dashboard</a>
+        </nav>
+        <div class="header-actions">
+            <h1>Shortlisted Candidates</h1>
+            <button id="exportExcel" class="btn">Export to Excel</button>
+        </div>
+        <table id="candidates-table" class="table">
+            <thead>
+                <tr>
+                    <th>Full Name</th>
+                    <th>Email</th>
+                    <th>Job Title</th>
+                    <th id="score-header">Score</th>
+                    <th>Evaluation</th>
+                    <th>CV</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for candidate in candidates %}
+                <tr data-candidate-id="{{ candidate.id }}">
+                    <td>{{ candidate.full_name }}</td>
+                    <td>{{ candidate.email }}</td>
+                    <td>{{ candidate.job.title }}</td>
+                    <td>{{ candidate.score }}</td>
+                    <td>{{ candidate.evaluation }}</td>
+                    <td>
+                        <a href="/download-cv/{{ candidate.id }}" class="btn btn-secondary btn-sm" target="_blank">
+                            Download CV
+                        </a>
+                    </td>
+                    <td>
+                        <button onclick="removeFromShortlist({{ candidate.id }})" class="btn btn-danger">
+                            Remove
+                        </button>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <script>
+    function removeFromShortlist(candidateId) {
+        fetch(`/api/hr/exclude-shortlist/${candidateId}`, {
+            method: 'POST'
+        })
+        .then(response => response.json())
+        .then(data => {
+            const row = document.querySelector(`tr[data-candidate-id="${candidateId}"]`);
+            if (row) {
+                row.remove();
+            }
+            alert('Candidate removed from shortlist');
+        })
+        .catch(error => console.error('Removal failed:', error));
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+        const exportButton = document.querySelector('#exportExcel');
+        
+        exportButton.addEventListener('click', function() {
+            fetch('/api/hr/candidates/export?type=shortlisted')
+                .then(response => response.blob())
+                .then(blob => {
+                    const url = window.URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.href = url;
+                    a.download = 'shortlisted_candidates.xlsx';
+                    document.body.appendChild(a);
+                    a.click();
+                    window.URL.revokeObjectURL(url);
+                    a.remove();
+                })
+                .catch(error => console.error('Export failed:', error));
+        });
+    });
+    </script>
+</body>

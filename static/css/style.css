@@ -1,0 +1,320 @@
+/* Table Styling */
+table {
+    border-spacing: 0;
+    width: 100%;
+    margin: 30px 0;
+    border-collapse: separate;
+    border-spacing: 0 12px;
+}
+
+tr {
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+td, th {
+    padding: 16px;
+    text-align: left;
+    border-bottom: 1px solid #e9ecef;
+}
+
+/* Button Consistency */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 16px;
+    border-radius: 6px;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    min-width: 130px;
+    height: 40px;
+    margin: 0 5px;
+}
+
+/* Export Excel Button Spacing */
+.export-button {
+    margin-bottom: 24px;
+}
+
+/* Action Buttons Container */
+.action-buttons {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+/* Specific Button Styles */
+.btn-download {
+    background-color: #228be6;
+    color: white;
+}
+
+.btn-download:hover {
+    background-color: #1971c2;
+}
+
+.btn-shortlist {
+    background-color: #40c057;
+    color: white;
+}
+
+.btn-shortlist:hover {
+    background-color: #2f9e44;
+}
+
+.btn-remove {
+    background-color: #fa5252;
+    color: white;
+}
+
+.btn-remove:hover {
+    background-color: #e03131;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    background-color: #f8f9fa;
+}
+
+.job-list {
+    display: grid;
+    gap: 24px;
+    margin-top: 30px;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+}
+
+.job-card {
+    border: 1px solid #e9ecef;
+    padding: 24px;
+    border-radius: 12px;
+    background: #fff;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.job-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+}
+
+.job-title {
+    font-size: 1.3em;
+    color: #212529;
+    margin-bottom: 12px;
+    font-weight: 600;
+    line-height: 1.4;
+}
+
+.job-location {
+    color: #495057;
+    margin-bottom: 12px;
+    font-size: 0.95em;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.job-status {
+    display: inline-block;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 0.9em;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.status-active {
+    background: #e3fcef;
+    color: #0a5a2d;
+}
+
+.status-completed {
+    background: #fff5f5;
+    color: #c92a2a;
+}
+
+.btn:hover {
+    transform: translateY(-1px);
+}
+
+.btn:disabled {
+    background: #dee2e6;
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+/* Additional Professional Touches */
+@media (max-width: 768px) {
+    .job-list {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Smooth Scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Better Typography */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    line-height: 1.6;
+    color: #343a40;
+}
+
+/* Form Layout and Alignment */
+.form-container {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 40px;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Form Width Control */
+.form-content {
+    width: 100%;
+    max-width: 600px;
+}
+
+/* Form Groups Spacing */
+.form-group {
+    margin-bottom: 28px;
+    width: 100%;
+}
+
+/* Label Alignment */
+.form-group label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: 500;
+    color: #212529;
+    font-size: 0.95em;
+    text-align: left;
+}
+
+/* Input Field Consistency */
+.form-control {
+    width: 100%;
+    padding: 12px 16px;
+    border: 2px solid #e9ecef;
+    border-radius: 6px;
+    font-size: 1em;
+    height: 48px;
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: #228be6;
+    box-shadow: 0 0 0 3px rgba(34,139,230,0.1);
+}
+
+/* Textarea Height */
+textarea.form-control {
+    min-height: 150px;
+    padding: 16px;
+}
+
+/* File Input */
+.form-control[type="file"] {
+    padding: 8px;
+    border: 2px dashed #e9ecef;
+    background: #f8f9fa;
+    cursor: pointer;
+}
+
+.form-control[type="file"]:hover {
+    border-color: #228be6;
+    background: #f1f3f5;
+}
+
+/* Select Input */
+select.form-control {
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    background-size: 1em;
+}
+
+/* Submit Button Container */
+.form-actions {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+}
+
+/* Submit Button Styling */
+.form-submit {
+    min-width: 200px;
+    padding: 14px 28px;
+    font-size: 1.1em;
+    text-align: center;
+    background: #228be6;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.form-submit:hover {
+    background: #1971c2;
+    transform: translateY(-1px);
+}
+
+/* Form Section Spacing */
+.form-section {
+    margin-bottom: 40px;
+    width: 100%;
+}
+
+/* Form Header Alignment */
+.form-header {
+    text-align: center;
+    margin-bottom: 40px;
+    width: 100%;
+}
+
+.form-header h2 {
+    color: #212529;
+    font-size: 1.8em;
+    margin-bottom: 8px;
+}
+
+.form-header p {
+    color: #868e96;
+    font-size: 0.95em;
+}
+
+/* Required Field Indicator */
+.required::after {
+    content: "*";
+    color: #fa5252;
+    margin-left: 4px;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .form-container {
+        padding: 24px;
+    }
+    
+    .form-content {
+        max-width: 100%;
+    }
+}

@@ -1,0 +1,22 @@
+API Integration:
+
+
+Reference Code for Claude API Call: Use the following sample code as a guide when calling the Claude API to evaluate CVs.
+python
+
+
+Code:
+
+import anthropic
+
+client = anthropic.Anthropic(
+    api_key="my_api_key",
+)
+message = client.messages.create(
+    model="claude-3-5-sonnet-20241022",
+    max_tokens=1024,
+    messages=[
+        {"role": "user", "content": "Evaluate the CV for job requirements"}
+    ]
+)
+Response = message.content[0].text

@@ -1,0 +1,64 @@
+Database Requirements
+To implement the pages and functionalities listed, the following databases and tables are required:
+
+Database Name: JOBS DB
+
+Table: Jobs
+Fields:
+job_id (Primary Key, Auto Increment)
+title (String) - Job Title
+location (String) - Job Location
+summary (Text) - Summary of Job Description
+description (Text) - Full Job Description
+requirements (Text) - Job Requirements
+status (String) - Job Status ("Active" or "Completed")
+Functionality:
+Store and manage job postings, updated based on HR's actions (Add, Edit, Delete) and candidate applications.
+
+
+Table: Applications
+
+Fields:
+application_id (Primary Key, Auto Increment)
+job_id (Foreign Key) - Links to job_id in the Jobs table
+candidate_name (String) - Candidate's Full Name
+email (String) - Candidate’s Email
+cv_file (Binary or File Path) - Uploaded CV file in PDF format
+status (String) - Application Status ("Applied", "Completed")
+score (Integer) - Evaluation Score (1, 2, or 3) from CV evaluation
+evaluation (Text) - Brief evaluation from CV assessment
+Functionality:
+Stores candidate applications and evaluation details, updated on form submission and used to control the application process on candidate pages.
+
+Table: Candidates
+
+Fields:
+candidate_id (Primary Key, Auto Increment)
+full_name (String) - Candidate's Full Name
+email (String) - Candidate’s Email
+applied_jobs (Array or JSON) - List of job_ids the candidate has applied for
+Functionality:
+Manages candidate profiles, tracks applications, and connects candidates to applied jobs in Job_Application table.
+
+Table: HR
+
+Fields:
+hr_id (Primary Key, Auto Increment)
+full_name (String) - HR’s Full Name
+email (String) - HR’s Email
+permissions (JSON or Enum) - Permissions for various HR actions (e.g., Add Job, Edit Job, Shortlist Candidate)
+Functionality:
+Stores HR information and permissions, enabling secure access to HR Dashboard and job/candidate management functionalities.
+
+
+Table: Shortlisted_Candidates
+
+Fields:
+shortlist_id (Primary Key, Auto Increment)
+candidate_id (Foreign Key) - Links to candidate_id in Candidates table
+job_id (Foreign Key) - Links to job_id in Jobs table
+score (Integer) - Evaluation Score from CV assessment
+evaluation (Text) - Evaluation notes from Claude API
+Functionality:
+Manages candidates shortlisted by HR for specific jobs, supporting sorting and removal of candidates from shortlist back to general candidate listings.
+Each table is designed to support the corresponding pages, ensuring accurate record-keeping, seamless navigation, and the application’s core logic, including status updates, application tracking, and evaluations.

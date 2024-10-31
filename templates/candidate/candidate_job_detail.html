@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Detail</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <nav class="breadcrumb">
+            <a href="{{ url_for('candidate_job_listing') }}">← Back to Jobs</a>
+        </nav>
+        <div id="jobDetail" class="job-detail">
+            <h1>{{ job.title }}</h1>
+            <p class="location">{{ job.location }}</p>
+            <div class="description">{{ job.description }}</div>
+            <div class="status">Status: {{ job.status }}</div>
+            {% if job.status == 'Active' %}
+            <a href="{{ url_for('candidate_application', job_id=job.id) }}" class="btn apply-btn">Apply Now</a>
+            {% endif %}
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='js/job-detail.js') }}"></script>
+</body>
+</html>

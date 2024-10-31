@@ -1,0 +1,46 @@
+-- To access SQLite CLI: 
+sqlite3 instance/database.db
+
+-- View all jobs
+SELECT * FROM job_listing;
+
+-- View all applications
+SELECT * FROM job_application;
+
+-- View active jobs only
+SELECT * FROM job_listing WHERE status = 'Active';
+
+-- View applications with scores above 80
+SELECT * FROM job_application WHERE score > 80;
+
+-- Join jobs and applications
+SELECT j.title, a.full_name, a.score 
+FROM job_listing j
+JOIN job_application a ON j.id = a.job_id;
+
+-- View latest applications
+SELECT * FROM job_application ORDER BY applied_at DESC LIMIT 5;
+
+-- To exit SQLite CLI:
+.quit
+
+-- To show all tables:
+.tables
+
+-- To show all columns in a table:
+.schema <table_name>
+
+-- to delete all data from a table:
+DELETE FROM <table_name>;
+
+-- Delete by ID
+DELETE FROM job_application WHERE id = 1;
+
+-- Delete applications with low scores
+DELETE FROM job_application WHERE score < 50;
+
+-- Delete applications for a specific job
+DELETE FROM job_application WHERE job_id = 5;
+
+-- Delete non-shortlisted applications
+DELETE FROM job_application WHERE is_shortlisted = 0;

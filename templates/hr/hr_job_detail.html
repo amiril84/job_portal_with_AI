@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ 'Edit' if job else 'Add New' }} Job</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <nav class="breadcrumb">
+            <a href="{{ url_for('hr_job_listing') }}">← Back to Job Listings</a>
+        </nav>
+        <h1>{{ 'Edit' if job else 'Add New' }} Job</h1>
+        <form id="jobForm" class="job-form">
+            <div class="form-group">
+                <label for="title">Job Title *</label>
+                <input type="text" id="title" name="title" value="{{ job.title if job else '' }}" required>
+            </div>
+            <div class="form-group">
+                <label for="location">Location *</label>
+                <input type="text" id="location" name="location" value="{{ job.location if job else '' }}" required>
+            </div>
+            <div class="form-group">
+                <label for="description">Description *</label>
+                <textarea id="description" name="description" rows="5" required>{{ job.description if job else '' }}</textarea>
+            </div>
+            <div class="form-group">
+                <label for="requirements">Requirements *</label>
+                <textarea id="requirements" name="requirements" rows="5" required>{{ job.requirements if job else '' }}</textarea>
+            </div>
+            <div class="form-group">
+                <label for="status">Status</label>
+                <select id="status" name="status">
+                    <option value="Active" {{ 'selected' if job and job.status == 'Active' else '' }}>Active</option>
+                    <option value="Completed" {{ 'selected' if job and job.status == 'Completed' else '' }}>Completed</option>
+                </select>
+            </div>
+            <button type="submit" class="btn">{{ 'Update' if job else 'Create' }} Job</button>
+        </form>
+    </div>
+    <script src="{{ url_for('static', filename='js/hr-job-detail.js') }}"></script>
+</body>
+</html>

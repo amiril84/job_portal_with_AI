@@ -1,0 +1,75 @@
+Requirements with HTML Page Names
+
+Page: Candidate Job Listing (candidate_job_listing.html)
+
+Display all active jobs in a table with fields: Job Title, Location, Job Summary, Status (Active or Completed), and Job Details (link to candidate_job_detail.html).
+If a candidate has applied or HR has marked the job as completed, update the Status to "Completed."
+
+---
+
+Page: Candidate Job Detail (candidate_job_detail.html)
+
+Show detailed job info: Title, Location, Full Description, Status, and an Apply Button.
+Redirect to candidate_application.html when applying; disable the Apply Button if the candidate has already applied or the job is marked completed.
+Include navigation back to candidate_job_listing.html.
+
+---
+
+Page: Candidate Application (candidate_application.html)
+
+A form with mandatory fields: Full Name, Email, CV Upload (PDF, max 5MB), and Submit.
+On submission, redirect to candidate_thank_you.html, update the job listing as “Applied,” and log application data.
+Include navigation to candidate_job_detail.html and candidate_job_listing.html.
+
+---
+
+Integration & Logic: Application Submission
+
+Mark the applied role as “You have applied” in both candidate_job_listing.html and candidate_job_detail.html, disabling the Apply button.
+Extract text from the PDF using PyPDF2, evaluate the CV with Claude API, and save the results (Score, Evaluation) in the Job_Application database.
+
+---
+
+Page: Candidate Thank You (candidate_thank_you.html)
+
+Display a thank-you message with the job title and navigation back to candidate_job_listing.html.
+
+---
+
+Page: HR Dashboard (hr_dashboard.html)
+
+Display links to hr_job_listing.html, hr_candidate_listing.html, and hr_shortlisted_listing.html.
+
+---
+
+Page: HR Job Listing (hr_job_listing.html)
+
+Show active jobs in a table with fields: Job Title, Location, Job Summary, Status, Edit, and Delete.
+The Edit button links to hr_job_detail.html for job updates; Delete removes the job.
+Include navigation back to hr_dashboard.html.
+
+---
+
+Page: HR Job Detail (hr_job_detail.html)
+
+A form with fields: Job Title, Location, Status, Description, Requirements, and Submit.
+If accessed via Add Job, the form is empty; if through Edit, it's pre-filled. Updates should reflect across relevant pages and in the Job_Listing database.
+Navigation links to hr_job_listing.html and hr_dashboard.html.
+
+---
+
+Page: HR Candidate Listing (hr_candidate_listing.html)
+
+Display candidates with fields: Full Name, Email, CV, Job Title, Score, Evaluation, and Shortlist Button.
+Sort by Full Name or Score, download CVs, and export the table as Excel.
+Shortlist moves candidates to hr_shortlisted_listing.html and updates the database.
+Navigation back to hr_dashboard.html.
+
+---
+
+Page: HR Shortlisted Listing (hr_shortlisted_listing.html)
+
+Show shortlisted candidates with fields: Full Name, Email, CV, Job Title, Score, Evaluation, and Remove Button.
+Sort and download options are similar to hr_candidate_listing.html.
+Removing candidates moves them back to hr_candidate_listing.html and updates the database.
+Navigation back to hr_dashboard.html.

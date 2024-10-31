@@ -1,0 +1,7 @@
+Initialize the Job Database with five sample job postings:
+
+Software Engineer: Programming and software development requirements.
+Chef: Culinary skills and kitchen management experience.
+Finance Manager: Financial planning and management experience.
+Nurse: Qualifications in healthcare and patient care experience.
+IT Program Manager: Project management and IT technical skills.
